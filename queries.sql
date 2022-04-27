@@ -14,11 +14,11 @@ SELECT * FROM animals WHERE weight_kg BETWEEN 10.4 AND 17.3;
 BEGIN;
 
 UPDATE animals SET species = 'unspecified';
-SELECT * FROM animals;
+SELECT species FROM animals;
 
 ROLLBACK;
 
-SELECT * FROM animals;
+SELECT species FROM animals;
 
 --SECOND TRANSACTION
 
@@ -29,13 +29,13 @@ UPDATE animals SET species = 'pokemon' WHERE species IS NULL;
 
 COMMIT;
 
-SELECT * FROM animals;
+SELECT species FROM animals;
 
 --THIRD TRANSACTION
 
 BEGIN;
 
-DELETE FROM animals;
+DELETE * FROM animals;
 
 ROLLBACK;
 
@@ -60,13 +60,13 @@ COMMIT;
 SELECT * FROM animals;
 
 --How many animals are there?
-SELECT COUNT() FROM animals;
+SELECT COUNT(*) FROM animals;
 --How many animals have never tried to escape?
-SELECT COUNT() FROM animals WHERE escape_attempts <= 0;
+SELECT COUNT(*) FROM animals WHERE escape_attempts = 0;
 --What is the average weight of animals?
 SELECT AVG(weight_kg) FROM animals;
 --Who escapes the most, neutered or not neutered animals?
-SELECT MAX(escape_attempts) FROM animals WHERE neutered = true;
+SELECT MAX(escape_attempts),neutered FROM animals GROUP BY neutered;
 --What is the minimum and maximum weight of each type of animal?
 SELECT MIN(weight_kg),MAX(weight_kg),species FROM animals GROUP BY species;
 --What is the average number of escape attempts per animal type of those born between 1990 and 2000?
