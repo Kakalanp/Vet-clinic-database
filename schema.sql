@@ -5,8 +5,9 @@ CREATE TABLE animals (
   name              VARCHAR(250),
   date_of_birth     DATE,
   escape_attempts   INT,
-  neutered          bit,
-  weight_kg         decimal,
-  species           VARCHAR(250),
+  neutered          BOOLEAN,
+  weight_kg         DECIMAL,
   PRIMARY KEY(id)
 );
+
+ALTER TABLE animals ADD COLUMN species VARCHAR;
