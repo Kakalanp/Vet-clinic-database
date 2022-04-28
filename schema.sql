@@ -59,3 +59,4 @@ vets.id as vet_id,
 vets.name as vet_name
 FROM animals
 INNER JOIN vets ON animals.id = vets.id);
+ALTER TABLE visits ADD COLUMN date_of_visit DATE;

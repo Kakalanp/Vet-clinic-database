@@ -71,6 +71,7 @@ SELECT MAX(escape_attempts),neutered FROM animals GROUP BY neutered;
 SELECT MIN(weight_kg),MAX(weight_kg),species FROM animals GROUP BY species;
 --What is the average number of escape attempts per animal type of those born between 1990 and 2000?
 SELECT AVG(escape_attempts),species FROM animals WHERE date_of_birth BETWEEN 'Jan 1st, 1990' AND 'Dec 31st, 2000' GROUP BY species;
+
 --What animals belong to Melody Pond?
 SELECT name FROM animals INNER JOIN owners ON animals.owner_id = owners.id WHERE owners.full_name = 'Melody Pond';
 --List of all animals that are pokemon (their type is Pokemon)
@@ -85,3 +86,14 @@ SELECT name FROM animals INNER JOIN owners ON animals.owner_id = owners.id WHERE
 SELECT * FROM animals INNER JOIN species ON animals.species_id = species.id INNER JOIN owners ON animals.owner_id = owners.id WHERE owners.full_name = 'Dean Winchester' AND escape_attempts = 0;
 --Who owns the most animals?
 SELECT full_name FROM owners INNER JOIN owners ON owner_id = owners.id GROUP BY owner_id ORDER BY COUNT(*) DESC LIMIT 1;
+
+--Who was the last animal seen by William Tatcher?
+--How many different animals did Stephanie Mendez see?
+--List all vets and their specialties, including vets with no specialties.
+--List all animals that visited Stephanie Mendez between April 1st and August 30th, 2020.
+--What animal has the most visits to vets?
+--Who was Maisy Smith's first visit?
+--Details for most recent visit: animal information, vet information, and date of visit.
+--How many visits were with a vet that did not specialize in that animal's species?
+--What specialty should Maisy Smith consider getting? Look for the species she gets the most.
+
