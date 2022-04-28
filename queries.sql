@@ -84,4 +84,4 @@ SELECT name FROM animals INNER JOIN owners ON animals.owner_id = owners.id WHERE
 --List all animals owned by Dean Winchester that haven't tried to escape.
 SELECT * FROM animals INNER JOIN species ON animals.species_id = species.id INNER JOIN owners ON animals.owner_id = owners.id WHERE owners.full_name = 'Dean Winchester' AND escape_attempts = 0;
 --Who owns the most animals?
-SELECT full_name FROM owners INNER JOIN owners ON owner_id = owners.id GROUP BY o.owner_id ORDER BY COUNT(*) DESC LIMIT 1;
+SELECT full_name FROM owners INNER JOIN owners ON owner_id = owners.id GROUP BY owner_id ORDER BY COUNT(*) DESC LIMIT 1;
